@@ -25,68 +25,68 @@ class CrudTestCase(TestCase):
         cls.test_event = baker.make("testApp.Event", title="TEST EVENT")
         cls.test_server = baker.make("testApp.Server", name="TEST SERVER")
 
-    def test_event_model(self):
-        event_1 = Event.objects.get(title="TEST EVENT")
+    # def test_event_model(self):
+    #     event_1 = Event.objects.get(title="TEST EVENT")
 
-        # testing big auto field as a primary key
-        self.assertEqual(event_1.id, 1)
+    #     # testing big auto field as a primary key
+    #     self.assertEqual(event_1.id, 1)
 
-        # testing website field with default null value
-        self.assertIsNone(event_1.website)
+    #     # testing website field with default null value
+    #     self.assertIsNone(event_1.website)
 
-        # testing fields with choices
-        self.assertIn(event_1.t_size, ("S", "M", "L"))
-        event_1.brochure = self.test_image
-        print(event_1.id)
+    #     # testing fields with choices
+    #     self.assertIn(event_1.t_size, ("S", "M", "L"))
+    #     event_1.brochure = self.test_image
+    #     print(event_1.id)
 
-        # testing float field with blank = true and a set default value
-        self.assertIsNotNone(event_1.rating)
-        self.assertEquals(event_1.rating, 5.0)
-        self.assertIsInstance(event_1.rating, float)
+    #     # testing float field with blank = true and a set default value
+    #     self.assertIsNotNone(event_1.rating)
+    #     self.assertEquals(event_1.rating, 5.0)
+    #     self.assertIsInstance(event_1.rating, float)
 
-        # testing date and datetime fields
-        self.assertEqual(event_1.start_date_time.date(), datetime.today().date())
-        self.assertEqual(event_1.start_date, datetime.today().date())
+    #     # testing date and datetime fields
+    #     self.assertEqual(event_1.start_date_time.date(), datetime.today().date())
+    #     self.assertEqual(event_1.start_date, datetime.today().date())
 
-        # testing duration field
-        self.assertIsNotNone(event_1.duration)
-        self.assertIsInstance(event_1.duration, timedelta)
+    #     # testing duration field
+    #     self.assertIsNotNone(event_1.duration)
+    #     self.assertIsInstance(event_1.duration, timedelta)
 
-        # testing email field
-        self.assertIsNotNone(event_1.organiser_email)
-        self.assertIsInstance(event_1.organiser_email, str)
+    #     # testing email field
+    #     self.assertIsNotNone(event_1.organiser_email)
+    #     self.assertIsInstance(event_1.organiser_email, str)
 
-        # testing slug field
-        self.assertIsNotNone(event_1.slug)
-        self.assertIsInstance(event_1.slug, str)
+    #     # testing slug field
+    #     self.assertIsNotNone(event_1.slug)
+    #     self.assertIsInstance(event_1.slug, str)
 
-        # testing big integer field
-        self.assertIsNotNone(event_1.no_of_views)
-        self.assertIsInstance(event_1.no_of_views, int)
+    #     # testing big integer field
+    #     self.assertIsNotNone(event_1.no_of_views)
+    #     self.assertIsInstance(event_1.no_of_views, int)
 
-        # testing integer field
-        self.assertIsNotNone(event_1.no_of_attendees)
-        self.assertIsInstance(event_1.no_of_attendees, int)
+    #     # testing integer field
+    #     self.assertIsNotNone(event_1.no_of_attendees)
+    #     self.assertIsInstance(event_1.no_of_attendees, int)
 
-        # testing time field
-        self.assertIsNotNone(event_1.start_time)
-        self.assertIsInstance(event_1.start_time, time)
+    #     # testing time field
+    #     self.assertIsNotNone(event_1.start_time)
+    #     self.assertIsInstance(event_1.start_time, time)
 
-        # testing text field
-        self.assertIsNotNone(event_1.summary)
-        self.assertIsInstance(event_1.summary, str)
+    #     # testing text field
+    #     self.assertIsNotNone(event_1.summary)
+    #     self.assertIsInstance(event_1.summary, str)
 
-        # testing boolean field
-        self.assertIsNotNone(event_1.is_accepting_registration)
-        self.assertIsInstance(event_1.is_accepting_registration, bool)
+    #     # testing boolean field
+    #     self.assertIsNotNone(event_1.is_accepting_registration)
+    #     self.assertIsInstance(event_1.is_accepting_registration, bool)
 
-        # testing image field
-        event_1.banner = self.test_image
-        self.assertIsNotNone(event_1.banner)
+    #     # testing image field
+    #     event_1.banner = self.test_image
+    #     self.assertIsNotNone(event_1.banner)
 
-        # testing file field
-        event_1.brochure = self.test_image
-        self.assertIsNotNone(event_1.brochure)
+    #     # testing file field
+    #     event_1.brochure = self.test_image
+    #     self.assertIsNotNone(event_1.brochure)
 
     def test_server_model(self):
         test_server = Server.objects.get(name="TEST SERVER")
